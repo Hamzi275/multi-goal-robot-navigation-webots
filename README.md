@@ -8,9 +8,12 @@ The simulation was built in **Webots R2025a** using a Python controller.
 
 The simulation video is included as:
 
-[Watch the demo video](./1.mp4)
+## Demo
 
-> Note: place `1.mp4` in the root of this repository before uploading to GitHub.
+![Robot Navigation Demo](demo.gif)
+
+▶️ Full Video: [1.mp4](./1.mp4)
+
 
 ## Problem Statement
 
