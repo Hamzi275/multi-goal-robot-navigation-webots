@@ -10,7 +10,7 @@ The simulation video is included as:
 
 ## Demo
 
-![Robot Navigation Demo](demo.gif)
+![Robot Navigation Demo](1.gif)
 
 ▶️ Full Video: [1.mp4](./1.mp4)
 
