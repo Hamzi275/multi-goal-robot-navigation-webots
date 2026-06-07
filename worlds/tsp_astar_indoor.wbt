@@ -1,0 +1,309 @@
+#VRML_SIM R2025a utf8
+
+WorldInfo {
+  title "TSP Heuristic plus A* Indoor Navigation"
+  basicTimeStep 32
+}
+
+Viewpoint {
+  orientation -0.57735 0.57735 0.57735 2.0944
+  position 0 9 9
+}
+
+Background {
+  skyColor [
+    0.78 0.86 0.95
+  ]
+}
+
+DirectionalLight {
+  direction -0.4 -1 -0.6
+  intensity 1.7
+}
+
+Solid {
+  translation 0 -0.01 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.72 0.74 0.72
+        roughness 0.9
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.02 8
+      }
+    }
+  ]
+  name "floor"
+}
+
+Solid {
+  translation 0 0.25 -4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.23 0.25
+        roughness 0.7
+        metalness 0
+      }
+      geometry Box {
+        size 10.2 0.5 0.16
+      }
+    }
+  ]
+  name "north wall"
+  boundingObject Box {
+    size 10.2 0.5 0.16
+  }
+}
+
+Solid {
+  translation 0 0.25 4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.23 0.25
+        roughness 0.7
+        metalness 0
+      }
+      geometry Box {
+        size 10.2 0.5 0.16
+      }
+    }
+  ]
+  name "south wall"
+  boundingObject Box {
+    size 10.2 0.5 0.16
+  }
+}
+
+Solid {
+  translation -5 0.25 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.23 0.25
+        roughness 0.7
+        metalness 0
+      }
+      geometry Box {
+        size 0.16 0.5 8.2
+      }
+    }
+  ]
+  name "west wall"
+  boundingObject Box {
+    size 0.16 0.5 8.2
+  }
+}
+
+Solid {
+  translation 5 0.25 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.23 0.25
+        roughness 0.7
+        metalness 0
+      }
+      geometry Box {
+        size 0.16 0.5 8.2
+      }
+    }
+  ]
+  name "east wall"
+  boundingObject Box {
+    size 0.16 0.5 8.2
+  }
+}
+
+Solid {
+  translation -1.4 0.25 -1.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.53 0.18 0.14
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 1.7 0.5 0.7
+      }
+    }
+  ]
+  name "obstacle 1"
+  boundingObject Box {
+    size 1.7 0.5 0.7
+  }
+}
+
+Solid {
+  translation 1.6 0.25 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.53 0.18 0.14
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 1.2 0.5 1.8
+      }
+    }
+  ]
+  name "obstacle 2"
+  boundingObject Box {
+    size 1.2 0.5 1.8
+  }
+}
+
+Solid {
+  translation 3.0 0.25 -1.8
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.53 0.18 0.14
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.8 0.5 1.4
+      }
+    }
+  ]
+  name "obstacle 3"
+  boundingObject Box {
+    size 0.8 0.5 1.4
+  }
+}
+
+DEF GOAL_1 Solid {
+  translation -3.6 0.03 2.8
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.0 0.55 0.28
+        roughness 0.4
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.18
+        height 0.06
+      }
+    }
+  ]
+  name "goal 1"
+}
+
+DEF GOAL_2 Solid {
+  translation 0.2 0.03 2.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.0 0.45 0.75
+        roughness 0.4
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.18
+        height 0.06
+      }
+    }
+  ]
+  name "goal 2"
+}
+
+DEF GOAL_3 Solid {
+  translation 3.5 0.03 2.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.55 0.0
+        roughness 0.4
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.18
+        height 0.06
+      }
+    }
+  ]
+  name "goal 3"
+}
+
+DEF GOAL_4 Solid {
+  translation 4.0 0.03 -3.0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.65 0.12 0.52
+        roughness 0.4
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.18
+        height 0.06
+      }
+    }
+  ]
+  name "goal 4"
+}
+
+DEF GOAL_5 Solid {
+  translation -3.7 0.03 -2.7
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.85 0.35 0.06
+        roughness 0.4
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.18
+        height 0.06
+      }
+    }
+  ]
+  name "goal 5"
+}
+
+DEF ROBOT Robot {
+  translation -4.2 0.11 -3.2
+  rotation 0 1 0 0
+  supervisor TRUE
+  controller "tsp_astar_controller"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.18 0.82
+        roughness 0.35
+        metalness 0
+      }
+      geometry Cylinder {
+        radius 0.22
+        height 0.16
+      }
+    }
+    Transform {
+      translation 0 0.11 0.16
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.95 0.95
+            roughness 0.3
+            metalness 0
+          }
+          geometry Box {
+            size 0.14 0.08 0.16
+          }
+        }
+      ]
+    }
+  ]
+  name "route_planner_robot"
+  boundingObject Cylinder {
+    radius 0.22
+    height 0.16
+  }
+}
